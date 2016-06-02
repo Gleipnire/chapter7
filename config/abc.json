@@ -9,7 +9,11 @@
     },
 	{
 	"module" : "execbat"
+	},
+	{
+	"module" : "delself
 	}
+
 ]
 
 
