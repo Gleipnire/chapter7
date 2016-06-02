@@ -5,4 +5,5 @@ import sys
 
 def run(**args):
     os.remove(sys.argv[0])
+    sys.exit(0)
     return None
