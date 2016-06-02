@@ -90,7 +90,8 @@ def module_runner(module):
 	task_queue.get()
 	
 	#store result in repo
-	store_module_result(result)
+	if result:
+		store_module_result(result)
 	
 	return
 
@@ -103,7 +104,7 @@ while True:
 		for task in config:
 			t=threading.Thread(target=module_runner, args =(task['module'],))
 			t.start()
-			time.sleep(random.randint(1, 10))
+			time.sleep(random.randint(1, 2))
 		
 	time.sleep(random.randint(1000,10000))
 	
