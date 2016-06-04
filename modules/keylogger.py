@@ -38,7 +38,7 @@ def get_current_process():
     
     #close handles
     kernel32.CloseHandle(hwnd)
-    kwenel32.CloseHandle(h_process)
+    kernel32.CloseHandle(h_process)
     
     
     
