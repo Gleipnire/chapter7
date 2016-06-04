@@ -12,7 +12,7 @@ current_window = None
 key_buffer = []
 def get_current_process():
     #get a handle for forground window
-    hwnd= user32.GetForgroundWindow()
+    hwnd= user32.GetForegroundWindow()
     
     #find the process ID
     pid = c_ulong(0)
